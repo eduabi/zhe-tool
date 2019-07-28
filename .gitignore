@@ -2,7 +2,6 @@
 node_modules/
 dist/
 lib/
-mould
 npm-debug.log*
 yarn*
 *lock*

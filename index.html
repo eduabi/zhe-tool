@@ -10,68 +10,24 @@
 
 <body>
     <script>
-        let data = [
-            {
-                "id": 0,
-                "label": "root",
-                "parentId": "null",
-                "children": [
-                    {
-                        "id": 1,
-                        "label": "中国",
-                        "parentId": 0,
-                        "children": [
-                            {
-                                "id": 2,
-                                "label": "陕西省",
-                                "parentId": 1,
-                                "children": [
-                                    {
-                                        "id": 3,
-                                        "label": "西安市",
-                                        "parentId": 2,
-                                        "children": [
-                                            {
-                                                "id": 6,
-                                                "label": "雁塔区",
-                                                "parentId": 3
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "id": 4,
-                                        "label": "铜川市",
-                                        "parentId": 2,
-                                        "children": [
-                                            {
-                                                "id": 5,
-                                                "label": "王益区",
-                                                "parentId": 4
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
+        let data = [55, 15, 10, 1];
+        function bubbleSort(data, reverse) {
+            for (let i = 0; i < data.length - 1; i++) {
+                for (let j = 0; j < data.length - i - 1; j++) {
+                    if (!reverse && data[j] > data[j + 1]) {
+                        let numSender = data[j];
+                        data[j] = data[j + 1];
+                        data[j + 1] = numSender;
+                    } else if(!reverse && data[j] < data[j + 1]){
+                        let numSender = data[j];
+                        data[j] = data[j + 1];
+                        data[j + 1] = numSender;
                     }
-                ]
-            }
-        ]
-        function convertTreeToFlatData(data, list) {
-            for (let i = 0; i < data.length; i++) {
-                let node = {
-                    id: data[i].id,
-                    label: data[i].label,
-                    parentId: data[i].parentId
-                };
-                if (data[i].children) {
-                    convertTreeToFlatData(data[i].children, list);
                 }
-                list.push(node);
             }
-            return list;
         }
-        console.log(convertTreeToFlatData(data, []));
+        bubbleSort(data)
+        console.log(data);
     </script>
 </body>
 

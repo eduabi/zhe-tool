@@ -1,0 +1,23 @@
+{
+  "name": "zhe-tool",
+  "version": "0.1.1",
+  "description": "this is a algorithmic set",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eduabi/zhe-tool.git"
+  },
+  "author": "eduabi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eduabi/zhe-tool/issues"
+  },
+  "homepage": "https://github.com/eduabi/zhe-tool#readme",
+  "dependencies": {}
+}
