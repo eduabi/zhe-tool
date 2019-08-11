@@ -10,24 +10,35 @@
 
 <body>
     <script>
-        let data = [55, 15, 10, 1];
-        function bubbleSort(data, reverse) {
-            for (let i = 0; i < data.length - 1; i++) {
-                for (let j = 0; j < data.length - i - 1; j++) {
-                    if (!reverse && data[j] > data[j + 1]) {
-                        let numSender = data[j];
-                        data[j] = data[j + 1];
-                        data[j + 1] = numSender;
-                    } else if(!reverse && data[j] < data[j + 1]){
-                        let numSender = data[j];
-                        data[j] = data[j + 1];
-                        data[j + 1] = numSender;
-                    }
+        let data = [];
+        for (let index = 0; index < 1000; index++) {
+            data.push(parseInt(parseFloat(Math.random().toFixed(2)) * 100));
+        }
+        let startTimestamp = new Date().getTime();
+        function quickSort(data, reverse) {
+            if (data.length < 2) {
+                return data;
+            }
+            let basicIndex = Math.floor(data.length / 2);
+            let basicItem = data.splice(basicIndex, 1)[0];
+            let left = [];
+            let right = [];
+            for (let i = 0; i < data.length; i++) {
+                if (data[i] < basicItem) {
+                    left.push(data[i]);
+                } else if (data[i] > basicItem) {
+                    right.push(data[i]);
                 }
             }
+            if (reverse) {
+                return quickSort(left).concat([basicItem], quickSort(right)).reverse();
+            } else {
+                return quickSort(left).concat([basicItem], quickSort(right));
+            }
         }
-        bubbleSort(data)
-        console.log(data);
+        console.log(quickSort(data));
+        let endTimestamp = new Date().getTime();
+        console.log((endTimestamp - startTimestamp));
     </script>
 </body>
 

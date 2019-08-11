@@ -1,5 +1,23 @@
 module.exports = {
     /**
+     * @description 数字类型数据算法集合
+     */
+    number: {
+        /**
+         * @description 获取15位以内的随机数
+         * @param {Array} data 
+         * @param {Boolean} reverse 
+         * @template [15,55,24,88,17]
+         */
+        getRandomNum: function (digits) {
+            let overrideStr = "1";
+            for (let i = 0; i < digits.length; i++) {
+                overrideStr += 0;
+            }
+            return parseInt(parseFloat(Math.random().toFixed(digits)) * Number(overrideStr));
+        }
+    },
+    /**
      * @description 树结构数据操作算法集合
      */
     tree: {
@@ -131,20 +149,45 @@ module.exports = {
         bubbleSort: function (data, reverse) {
             for (let i = 0; i < data.length - 1; i++) {
                 for (let j = 0; j < data.length - i - 1; j++) {
+                    let numSender = data[j];
                     if (!reverse && data[j] > data[j + 1]) {
-                        let numSender = data[j];
                         data[j] = data[j + 1];
                         data[j + 1] = numSender;
-                    } else if (!reverse && data[j] < data[j + 1]) {
-                        let numSender = data[j];
+                    } else if (reverse && data[j] < data[j + 1]) {
                         data[j] = data[j + 1];
                         data[j + 1] = numSender;
                     }
                 }
             }
+        },
+        /**
+         * @description 快速排序算法
+         * @param {Array} data 
+         * @param {Boolean} reverse 
+         * @template [15,55,24,88,17]
+         */
+        quickSort: function (data, reverse) {
+            if (data.length < 2) {
+                return data;
+            }
+            let basicIndex = Math.floor(data.length / 2);
+            let basicItem = data.splice(basicIndex, 1)[0];
+            let left = [];
+            let right = [];
+            for (let i = 0; i < data.length; i++) {
+                if (data[i] < basicItem) {
+                    left.push(data[i]);
+                } else if (data[i] > basicItem) {
+                    right.push(data[i]);
+                }
+            }
+            if (reverse) {
+                return quickSort(left).concat([basicItem], quickSort(right)).reverse();
+            } else {
+                return quickSort(left).concat([basicItem], quickSort(right));
+            }
         }
     }
-
 }
 
 
