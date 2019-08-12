@@ -141,7 +141,28 @@ module.exports = {
      */
     sort: {
         /**
-         * @description 冒泡排序算法
+         * @description 插入排序
+         * @param {Array} data 
+         * @param {Boolean} reverse 
+         * @template [15,55,24,88,17]
+         */
+        insertSort: function (data, reverse) {
+            if (data.length < 2) {
+                return data;
+            }
+            for (let i = 1; i < data.length; i++) {
+                for (let j = i; j > 0; j--) {
+                    if (data[j] < data[j - 1]) {
+                        let temp = data[j - 1];
+                        data[j - 1] = data[j];
+                        data[j] = temp;
+                    }
+                }
+            }
+            return !reverse ? data : data.reverse();
+        },
+        /**
+         * @description 冒泡排序
          * @param {Array} data 
          * @param {Boolean} reverse 
          * @template [15,55,24,88,17]
@@ -161,7 +182,7 @@ module.exports = {
             }
         },
         /**
-         * @description 快速排序算法
+         * @description 快速排序
          * @param {Array} data 
          * @param {Boolean} reverse 
          * @template [15,55,24,88,17]

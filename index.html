@@ -10,35 +10,30 @@
 
 <body>
     <script>
+        //let data = [15, 55, 24, 88, 17];
         let data = [];
-        for (let index = 0; index < 1000; index++) {
+        for (let index = 0; index < 10; index++) {
             data.push(parseInt(parseFloat(Math.random().toFixed(2)) * 100));
         }
-        let startTimestamp = new Date().getTime();
-        function quickSort(data, reverse) {
+        //let startTimestamp = new Date().getTime();
+        function insertSort(data, reverse) {
             if (data.length < 2) {
                 return data;
             }
-            let basicIndex = Math.floor(data.length / 2);
-            let basicItem = data.splice(basicIndex, 1)[0];
-            let left = [];
-            let right = [];
-            for (let i = 0; i < data.length; i++) {
-                if (data[i] < basicItem) {
-                    left.push(data[i]);
-                } else if (data[i] > basicItem) {
-                    right.push(data[i]);
+            for (let i = 1; i < data.length; i++) {
+                for (let j = i; j > 0; j--) {
+                    if (data[j] < data[j - 1]) {
+                        let temp = data[j - 1];
+                        data[j - 1] = data[j];
+                        data[j] = temp;
+                    }
                 }
             }
-            if (reverse) {
-                return quickSort(left).concat([basicItem], quickSort(right)).reverse();
-            } else {
-                return quickSort(left).concat([basicItem], quickSort(right));
-            }
+            return !reverse ? data : data.reverse();
         }
-        console.log(quickSort(data));
-        let endTimestamp = new Date().getTime();
-        console.log((endTimestamp - startTimestamp));
+        console.log(insertSort(data,true));
+        //let endTimestamp = new Date().getTime();
+        //console.log((endTimestamp - startTimestamp));
     </script>
 </body>
 
