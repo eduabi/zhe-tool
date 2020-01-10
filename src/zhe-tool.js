@@ -1,3 +1,4 @@
+let _regexp = require('./lib/regexp')
 module.exports = {
     /**
      * @description 数字类型数据算法集合
@@ -265,7 +266,11 @@ module.exports = {
             }
             return resArray;
         }
-    }
+    },
+    /**
+     * @description 正则表达式集合
+     */
+    regexp: _regexp
 }
 
 
